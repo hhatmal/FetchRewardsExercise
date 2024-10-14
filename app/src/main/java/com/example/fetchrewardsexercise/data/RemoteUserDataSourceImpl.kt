@@ -11,7 +11,12 @@ class RemoteUserDataSourceImpl(
     private val userApi: UserApi
 ): RemoteUserDataSource {
     override suspend fun getUsers(): Result<List<User>, DataError.Network> {
-        val users = userApi.getUsers().toUsers()
-        return Result.Success(users)
+        return try {
+            val users = userApi.getUsers().toUsers()
+            Result.Success(users)
+        } catch (e: Exception) {
+            // might not be the case, but just assume for now
+            Result.Error(DataError.Network.NO_INTERNET)
+        }
     }
 }
