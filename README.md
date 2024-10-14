@@ -7,7 +7,11 @@ App is split between presentation, domain, and data layers
 
 # Offline-first
 App stores data that is fetched remotely into the local database (Room). App will work 
-when 
+when internet is not available.
 
-# Networking
-Retrofit is 
+# Libraries
+- Jetpack Compose for UI
+- Koin for dependency injection
+- Retrofit for networking
+- Room for local database
+- JUnit/Mockito for unit tests
